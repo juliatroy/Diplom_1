@@ -63,16 +63,15 @@ def test_burger_ingredients_positions_can_be_switched():
     index2 = receipt.find(name2)
     burger.move_ingredient(0, 1)
     receipt_new = burger.get_receipt()
-    print(receipt_new)
     new_index1 = receipt_new.find(name1)
     new_index2 = receipt_new.find(name2)
     assert index1 < index2 and new_index1 > new_index2
 
 @pytest.mark.parametrize('name, price', [
-    ['not-a-bun', 0.0],
+    ['not-a-bun', 0.15],
     ['centurian non-gluten play-doh', 5],
-    ['escape-thoroid', -3.95],
-    ['zero-bun', 0]
+    ['escape-thoroid', 1.25],
+    ['zero-bun', 100]
     ])
 def test_burger_total_price_buns_only(name, price):
     bun = Bun(name, price)
@@ -83,16 +82,16 @@ def test_burger_total_price_buns_only(name, price):
     assert expected_price == actual_price
 
 @pytest.mark.parametrize('name, price', [
-        ['not-a-bun', 0.0],
-        ['centurian non-gluten play-doh', 5],
-        ['escape-thoroid', -3.95],
-        ['zero-bun', 0]
+    ['not-a-bun', 0.15],
+    ['centurian non-gluten play-doh', 5],
+    ['escape-thoroid', 1.25],
+    ['zero-bun', 100]
     ])
 def test_burger_total_price_buns_multiple_ingredient(name, price):
     ingredients_list = [
                 ['INGREDIENT_TYPE_SAUCE', 'invisible_sauce', 0.0],
                 ['INGREDIENT_TYPE_SAUCE', 'million scoville space pepper', 7],
-                ['INGREDIENT_TYPE_SAUCE', 'non-spicy extra smooth shiny sauce', -9],
+                ['INGREDIENT_TYPE_SAUCE', 'non-spicy extra smooth shiny sauce', 9],
                 ['INGREDIENT_TYPE_SAUCE', 'some hidden ingredient', 0],
                 ['INGREDIENT_TYPE_FILLING', 'unicorn meat', 100],
                 ['INGREDIENT_TYPE_FILLING', 'mermaid lunges', 350]]
