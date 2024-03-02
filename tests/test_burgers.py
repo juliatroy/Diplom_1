@@ -40,7 +40,6 @@ def test_burger_ingredients_can_be_removed():
     burger.add_ingredient(ingredient1)
     burger.add_ingredient(ingredient2)
     receipt = burger.get_receipt()
-    print(receipt)
     assert ingredient1.get_name() in receipt and ingredient2.get_name() in receipt
     burger.remove_ingredient(0)
     receipt = burger.get_receipt()
